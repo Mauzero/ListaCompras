@@ -1,6 +1,7 @@
 
 let contador = 0;
 let costoTotal = 0;
+let totalEnproductos = 0;
 let element = document.getElementById("totalPrecio");
 element.innerHTML="Total precio";
 
@@ -73,7 +74,7 @@ agregar.addEventListener("click", (event)=>{
         lista+="<li>Se debe escribir una cantidad válida</li>";
     }
     if ((! validarNombre()) || (! validarCantidad()) ){
-        document.getElementById("alertValidaciones").innerHTML= 
+        document.getElementById("alertValidacionesTexto").innerHTML= 
         `!!!Los campos deben ser llenados correctamente!!!;
         <ul>${lista}</ul>`;
         document.getElementById("alertValidaciones").style.display="block";
@@ -92,6 +93,8 @@ agregar.addEventListener("click", (event)=>{
  let productos = document.getElementById("contadorProductos").innerHTML = contador;   
  let precio= (Math.floor((Math.random() * 50)*100))/100;  
  let cantidad = parseFloat(txtNumber.value);
+    totalEnproductos += (cantidad<1)?Math.ceil(cantidad):parseInt(cantidad);
+    document.getElementById("productosTotal").innerHTML=totalEnproductos;
 costoTotal += (precio * cantidad);
 total.innerHTML=`$ ${costoTotal.toFixed(2)}`
  let tmp= `<tr>
